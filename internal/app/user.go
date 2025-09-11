@@ -26,11 +26,7 @@ func init() {
 		srv := NewUser(c)
 		pb.RegisterUserHTTPServer(hs, srv)
 		pb.RegisterUserServer(gs, srv)
-
 	})
-}
-
-func init() {
 }
 
 func (u *User) Login(ctx context.Context, in *pb.LoginRequest) (*pb.LoginReply, error) {
@@ -39,4 +35,12 @@ func (u *User) Login(ctx context.Context, in *pb.LoginRequest) (*pb.LoginReply, 
 		return nil, err
 	}
 	return &pb.LoginReply{Token: token}, nil
+}
+
+func (u *User) RefreshToken(ctx context.Context, _ *pb.RefreshTokenRequest) (*pb.RefreshTokenReply, error) {
+	token, err := u.srv.RefreshToken(kratosx.MustContext(ctx))
+	if err != nil {
+		return nil, err
+	}
+	return &pb.RefreshTokenReply{Token: token}, nil
 }

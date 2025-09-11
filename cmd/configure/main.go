@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/limes-cloud/kratosx"
@@ -43,18 +42,6 @@ func RegisterServer(c config.Config, hs *http.Server, gs *grpc.Server) {
 			log.Error("business 配置变更失败")
 		} else {
 			log.Error("file 配置变更成功")
-		}
-	})
-
-	hs.Use("/*", func(handler middleware.Handler) middleware.Handler {
-		return func(ctx context.Context, req interface{}) (interface{}, error) {
-			reply, err := handler(ctx, req)
-			if err != nil {
-				return nil, err
-			}
-			return map[string]interface{}{
-				"data": reply,
-			}, nil
 		}
 	})
 
