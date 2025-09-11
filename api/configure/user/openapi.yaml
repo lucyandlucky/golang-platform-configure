@@ -1,0 +1,70 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: User API
+    version: 0.0.1
+paths:
+    /configure/api/v1/login:
+        post:
+            tags:
+                - User
+            description: 用户登录
+            operationId: User_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/configure.api.configure.user.v1.LoginRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/configure.api.configure.user.v1.LoginReply'
+    /configure/api/v1/token/refresh:
+        post:
+            tags:
+                - User
+            description: RefreshToken 刷新 token
+            operationId: User_RefreshToken
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/configure.api.configure.user.v1.RefreshTokenRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/configure.api.configure.user.v1.RefreshTokenReply'
+components:
+    schemas:
+        configure.api.configure.user.v1.LoginReply:
+            type: object
+            properties:
+                token:
+                    type: string
+        configure.api.configure.user.v1.LoginRequest:
+            type: object
+            properties:
+                username:
+                    type: string
+                password:
+                    type: string
+        configure.api.configure.user.v1.RefreshTokenReply:
+            type: object
+            properties:
+                token:
+                    type: string
+        configure.api.configure.user.v1.RefreshTokenRequest:
+            type: object
+            properties: {}
+tags:
+    - name: User

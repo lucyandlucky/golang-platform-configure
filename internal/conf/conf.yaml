@@ -1,0 +1,69 @@
+
+env: PROD
+server:
+  http:
+    addr: 127.0.0.1:7003
+    timeout: 60s
+    formatResponse: true
+    marshal:
+      emitUnpopulated: true
+      useProtoNames: true
+  grpc:
+    addr: 127.0.0.1:8003
+    timeout: 60s
+log:
+  level: 0
+  output:
+    - stdout
+    - file
+  file:
+    name: ./tmp/runtime/output.log
+    maxSize: 1
+    maxBackup: 5
+    maxAge: 1
+    compress: false
+jwt:
+  secret: limes-cloud-test
+  expire: 2h
+  renewal: 600s
+  whitelist:
+    POST:/configure/api/v1/login: true
+    POST:/configure/api/v1/token/refresh: true
+database:
+  system:
+    enable: true #是否启用数据库
+    drive: mysql #数据库类型
+    autoCreate: true #是否自动创建数据库
+    connect:
+      username: root
+      password: 8179
+      host: 127.0.0.1
+      port: 3306
+      dbName: resource
+      option: ?charset=utf8mb4&parseTime=True&loc=Local
+    config:
+      initializer:
+        enable: false
+        path: deploy/data.sql
+      transformError:
+        enable: true
+      maxLifetime: 2h #最大生存时间
+      maxOpenConn: 20 #最大连接数量
+      maxIdleConn: 10 #最大空闲数量
+      logLevel: 3 #日志等级
+      slowThreshold: 2s #慢sql阈值
+redis:
+  cache:
+    enable: true
+    host: 127.0.0.1:6379
+    username: ''
+    password: ''
+loader:
+  login: static/cert/login.pem
+business:
+  webui:
+    addr: ":6080"
+  author:
+    adminUser: 1280291001@qq.com
+    adminPassword: xrxy0852
+
