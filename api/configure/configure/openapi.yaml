@@ -1,0 +1,58 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Configure API
+    version: 0.0.1
+paths:
+    /configure/api/v1/configure:
+        get:
+            tags:
+                - Configure
+            operationId: Configure_GetConfigure
+            parameters:
+                - name: serverId
+                  in: query
+                  schema:
+                    type: integer
+                    format: uint32
+                - name: envId
+                  in: query
+                  schema:
+                    type: integer
+                    format: uint32
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/configure.api_configure.configure.v1.GetConfigureReply'
+components:
+    schemas:
+        configure.api_configure.configure.v1.GetConfigureReply:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: uint32
+                serverId:
+                    type: integer
+                    format: uint32
+                envId:
+                    type: integer
+                    format: uint32
+                content:
+                    type: string
+                description:
+                    type: string
+                version:
+                    type: string
+                format:
+                    type: string
+                createdAt:
+                    type: integer
+                    format: uint32
+tags:
+    - name: Configure

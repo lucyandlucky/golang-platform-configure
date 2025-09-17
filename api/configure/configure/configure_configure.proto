@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package configure.api_configure.configure.v1;
+
+option go_package = "./v1;v1";
+option java_multiple_files = true;
+option java_package = "configure.api.configure.v1";
+option java_outer_classname = "ServerV1";
+
+import "validate/validate.proto";
+
+message GetConfigureRequest {
+  uint32 serverId = 1[(validate.rules).uint32 = {gt: 0}];
+  uint32 envId = 2[(validate.rules).uint32 = {gt: 0}];
+}
+
+message GetConfigureReply {
+  uint32 id = 1;
+  uint32 serverId = 2;
+  uint32 envId = 3;
+  string content = 4;
+  string description = 5;
+  string version = 6;
+  string format = 7;
+  uint32 createdAt = 8;
+}
+
