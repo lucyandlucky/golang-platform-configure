@@ -270,3 +270,434 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = CreateServerReplyValidationError{}
+
+// Validate checks the field values on ListServerRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ListServerRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListServerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListServerRequestMultiError, or nil if none found.
+func (m *ListServerRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListServerRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetPage() <= 0 {
+		err := ListServerRequestValidationError{
+			field:  "Page",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if val := m.GetPageSize(); val <= 0 || val > 50 {
+		err := ListServerRequestValidationError{
+			field:  "PageSize",
+			reason: "value must be inside range (0, 50]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.Order != nil {
+
+		if _, ok := _ListServerRequest_Order_InLookup[m.GetOrder()]; !ok {
+			err := ListServerRequestValidationError{
+				field:  "Order",
+				reason: "value must be in list [asc desc]",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if m.OrderBy != nil {
+
+		if _, ok := _ListServerRequest_OrderBy_InLookup[m.GetOrderBy()]; !ok {
+			err := ListServerRequestValidationError{
+				field:  "OrderBy",
+				reason: "value must be in list [id]",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+	}
+
+	if m.Keyword != nil {
+		// no validation rules for Keyword
+	}
+
+	if m.Name != nil {
+		// no validation rules for Name
+	}
+
+	if m.Status != nil {
+		// no validation rules for Status
+	}
+
+	if len(errors) > 0 {
+		return ListServerRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListServerRequestMultiError is an error wrapping multiple validation errors
+// returned by ListServerRequest.ValidateAll() if the designated constraints
+// aren't met.
+type ListServerRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListServerRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListServerRequestMultiError) AllErrors() []error { return m }
+
+// ListServerRequestValidationError is the validation error returned by
+// ListServerRequest.Validate if the designated constraints aren't met.
+type ListServerRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListServerRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListServerRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListServerRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListServerRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListServerRequestValidationError) ErrorName() string {
+	return "ListServerRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListServerRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListServerRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListServerRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListServerRequestValidationError{}
+
+var _ListServerRequest_Order_InLookup = map[string]struct{}{
+	"asc":  {},
+	"desc": {},
+}
+
+var _ListServerRequest_OrderBy_InLookup = map[string]struct{}{
+	"id": {},
+}
+
+// Validate checks the field values on ListServerReply with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ListServerReply) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListServerReply with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListServerReplyMultiError, or nil if none found.
+func (m *ListServerReply) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListServerReply) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Total
+
+	for idx, item := range m.GetList() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ListServerReplyValidationError{
+						field:  fmt.Sprintf("List[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ListServerReplyValidationError{
+						field:  fmt.Sprintf("List[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ListServerReplyValidationError{
+					field:  fmt.Sprintf("List[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return ListServerReplyMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListServerReplyMultiError is an error wrapping multiple validation errors
+// returned by ListServerReply.ValidateAll() if the designated constraints
+// aren't met.
+type ListServerReplyMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListServerReplyMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListServerReplyMultiError) AllErrors() []error { return m }
+
+// ListServerReplyValidationError is the validation error returned by
+// ListServerReply.Validate if the designated constraints aren't met.
+type ListServerReplyValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListServerReplyValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListServerReplyValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListServerReplyValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListServerReplyValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListServerReplyValidationError) ErrorName() string { return "ListServerReplyValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ListServerReplyValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListServerReply.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListServerReplyValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListServerReplyValidationError{}
+
+// Validate checks the field values on ListServerReply_Server with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ListServerReply_Server) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListServerReply_Server with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListServerReply_ServerMultiError, or nil if none found.
+func (m *ListServerReply_Server) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListServerReply_Server) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Keyword
+
+	// no validation rules for Name
+
+	// no validation rules for CreatedAt
+
+	// no validation rules for UpdatedAt
+
+	if m.Description != nil {
+		// no validation rules for Description
+	}
+
+	if m.Status != nil {
+		// no validation rules for Status
+	}
+
+	if len(errors) > 0 {
+		return ListServerReply_ServerMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListServerReply_ServerMultiError is an error wrapping multiple validation
+// errors returned by ListServerReply_Server.ValidateAll() if the designated
+// constraints aren't met.
+type ListServerReply_ServerMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListServerReply_ServerMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListServerReply_ServerMultiError) AllErrors() []error { return m }
+
+// ListServerReply_ServerValidationError is the validation error returned by
+// ListServerReply_Server.Validate if the designated constraints aren't met.
+type ListServerReply_ServerValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListServerReply_ServerValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListServerReply_ServerValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListServerReply_ServerValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListServerReply_ServerValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListServerReply_ServerValidationError) ErrorName() string {
+	return "ListServerReply_ServerValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListServerReply_ServerValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListServerReply_Server.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListServerReply_ServerValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListServerReply_ServerValidationError{}

@@ -20,14 +20,19 @@ var _ = binding.EncodeURL
 const _ = http.SupportPackageIsVersion1
 
 const OperationServerCreateServer = "/configure.api.configure.server.v1.Server/CreateServer"
+const OperationServerListServer = "/configure.api.configure.server.v1.Server/ListServer"
 
 type ServerHTTPServer interface {
+	// CreateServer CreateServer 创建服务
 	CreateServer(context.Context, *CreateServerRequest) (*CreateServerReply, error)
+	// ListServer ListServer 获取服务信息列表
+	ListServer(context.Context, *ListServerRequest) (*ListServerReply, error)
 }
 
 func RegisterServerHTTPServer(s *http.Server, srv ServerHTTPServer) {
 	r := s.Route("/")
 	r.POST("/configure/api/v1/server", _Server_CreateServer0_HTTP_Handler(srv))
+	r.GET("/configure/api/v1/servers", _Server_ListServer0_HTTP_Handler(srv))
 }
 
 func _Server_CreateServer0_HTTP_Handler(srv ServerHTTPServer) func(ctx http.Context) error {
@@ -52,8 +57,28 @@ func _Server_CreateServer0_HTTP_Handler(srv ServerHTTPServer) func(ctx http.Cont
 	}
 }
 
+func _Server_ListServer0_HTTP_Handler(srv ServerHTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in ListServerRequest
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, OperationServerListServer)
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.ListServer(ctx, req.(*ListServerRequest))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*ListServerReply)
+		return ctx.Result(200, reply)
+	}
+}
+
 type ServerHTTPClient interface {
 	CreateServer(ctx context.Context, req *CreateServerRequest, opts ...http.CallOption) (rsp *CreateServerReply, err error)
+	ListServer(ctx context.Context, req *ListServerRequest, opts ...http.CallOption) (rsp *ListServerReply, err error)
 }
 
 type ServerHTTPClientImpl struct {
@@ -71,6 +96,19 @@ func (c *ServerHTTPClientImpl) CreateServer(ctx context.Context, in *CreateServe
 	opts = append(opts, http.Operation(OperationServerCreateServer))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (c *ServerHTTPClientImpl) ListServer(ctx context.Context, in *ListServerRequest, opts ...http.CallOption) (*ListServerReply, error) {
+	var out ListServerReply
+	pattern := "/configure/api/v1/servers"
+	path := binding.EncodeURL(pattern, in, true)
+	opts = append(opts, http.Operation(OperationServerListServer))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "GET", path, nil, &out, opts...)
 	if err != nil {
 		return nil, err
 	}

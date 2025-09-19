@@ -11,11 +11,20 @@ import "api/configure/server/configure_server.proto";
 import "google/api/annotations.proto";
 
 service Server {
+  // CreateServer 创建服务
   rpc CreateServer (CreateServerRequest) returns (CreateServerReply) {
     option (google.api.http) = {
       post: "/configure/api/v1/server",
       body: "*"
     };
   }
+
+  // ListServer 获取服务信息列表
+  rpc ListServer (ListServerRequest) returns (ListServerReply) {
+    option (google.api.http) = {
+      get: "/configure/api/v1/servers"
+    };
+  }
 }
+
 

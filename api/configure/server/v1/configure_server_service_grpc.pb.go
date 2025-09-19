@@ -20,13 +20,17 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Server_CreateServer_FullMethodName = "/configure.api.configure.server.v1.Server/CreateServer"
+	Server_ListServer_FullMethodName   = "/configure.api.configure.server.v1.Server/ListServer"
 )
 
 // ServerClient is the client API for Server service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServerClient interface {
+	// CreateServer 创建服务
 	CreateServer(ctx context.Context, in *CreateServerRequest, opts ...grpc.CallOption) (*CreateServerReply, error)
+	// ListServer 获取服务信息列表
+	ListServer(ctx context.Context, in *ListServerRequest, opts ...grpc.CallOption) (*ListServerReply, error)
 }
 
 type serverClient struct {
@@ -47,11 +51,24 @@ func (c *serverClient) CreateServer(ctx context.Context, in *CreateServerRequest
 	return out, nil
 }
 
+func (c *serverClient) ListServer(ctx context.Context, in *ListServerRequest, opts ...grpc.CallOption) (*ListServerReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListServerReply)
+	err := c.cc.Invoke(ctx, Server_ListServer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServerServer is the server API for Server service.
 // All implementations must embed UnimplementedServerServer
 // for forward compatibility.
 type ServerServer interface {
+	// CreateServer 创建服务
 	CreateServer(context.Context, *CreateServerRequest) (*CreateServerReply, error)
+	// ListServer 获取服务信息列表
+	ListServer(context.Context, *ListServerRequest) (*ListServerReply, error)
 	mustEmbedUnimplementedServerServer()
 }
 
@@ -64,6 +81,9 @@ type UnimplementedServerServer struct{}
 
 func (UnimplementedServerServer) CreateServer(context.Context, *CreateServerRequest) (*CreateServerReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateServer not implemented")
+}
+func (UnimplementedServerServer) ListServer(context.Context, *ListServerRequest) (*ListServerReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServer not implemented")
 }
 func (UnimplementedServerServer) mustEmbedUnimplementedServerServer() {}
 func (UnimplementedServerServer) testEmbeddedByValue()                {}
@@ -104,6 +124,24 @@ func _Server_CreateServer_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Server_ListServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListServerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServerServer).ListServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Server_ListServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServerServer).ListServer(ctx, req.(*ListServerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Server_ServiceDesc is the grpc.ServiceDesc for Server service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +152,10 @@ var Server_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateServer",
 			Handler:    _Server_CreateServer_Handler,
+		},
+		{
+			MethodName: "ListServer",
+			Handler:    _Server_ListServer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

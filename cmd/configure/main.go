@@ -1,7 +1,7 @@
 package main
 
 import (
-	context "context"
+	"context"
 	"fmt"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"

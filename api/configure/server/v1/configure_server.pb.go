@@ -134,6 +134,242 @@ func (x *CreateServerReply) GetId() uint32 {
 	return 0
 }
 
+type ListServerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      uint32                 `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	Order         *string                `protobuf:"bytes,3,opt,name=order,proto3,oneof" json:"order,omitempty"`
+	OrderBy       *string                `protobuf:"bytes,4,opt,name=orderBy,proto3,oneof" json:"orderBy,omitempty"`
+	Keyword       *string                `protobuf:"bytes,5,opt,name=keyword,proto3,oneof" json:"keyword,omitempty"`
+	Name          *string                `protobuf:"bytes,6,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Status        *bool                  `protobuf:"varint,7,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListServerRequest) Reset() {
+	*x = ListServerRequest{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListServerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListServerRequest) ProtoMessage() {}
+
+func (x *ListServerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListServerRequest.ProtoReflect.Descriptor instead.
+func (*ListServerRequest) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ListServerRequest) GetPage() uint32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ListServerRequest) GetPageSize() uint32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListServerRequest) GetOrder() string {
+	if x != nil && x.Order != nil {
+		return *x.Order
+	}
+	return ""
+}
+
+func (x *ListServerRequest) GetOrderBy() string {
+	if x != nil && x.OrderBy != nil {
+		return *x.OrderBy
+	}
+	return ""
+}
+
+func (x *ListServerRequest) GetKeyword() string {
+	if x != nil && x.Keyword != nil {
+		return *x.Keyword
+	}
+	return ""
+}
+
+func (x *ListServerRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ListServerRequest) GetStatus() bool {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return false
+}
+
+type ListServerReply struct {
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Total         uint32                    `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	List          []*ListServerReply_Server `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListServerReply) Reset() {
+	*x = ListServerReply{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListServerReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListServerReply) ProtoMessage() {}
+
+func (x *ListServerReply) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListServerReply.ProtoReflect.Descriptor instead.
+func (*ListServerReply) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListServerReply) GetTotal() uint32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *ListServerReply) GetList() []*ListServerReply_Server {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+type ListServerReply_Server struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Keyword       string                 `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Description   *string                `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Status        *bool                  `protobuf:"varint,5,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	CreatedAt     uint32                 `protobuf:"varint,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     uint32                 `protobuf:"varint,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListServerReply_Server) Reset() {
+	*x = ListServerReply_Server{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListServerReply_Server) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListServerReply_Server) ProtoMessage() {}
+
+func (x *ListServerReply_Server) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListServerReply_Server.ProtoReflect.Descriptor instead.
+func (*ListServerReply_Server) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *ListServerReply_Server) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ListServerReply_Server) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *ListServerReply_Server) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ListServerReply_Server) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ListServerReply_Server) GetStatus() bool {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return false
+}
+
+func (x *ListServerReply_Server) GetCreatedAt() uint32 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *ListServerReply_Server) GetUpdatedAt() uint32 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
 var File_api_configure_server_configure_server_proto protoreflect.FileDescriptor
 
 const file_api_configure_server_configure_server_proto_rawDesc = "" +
@@ -147,7 +383,35 @@ const file_api_configure_server_configure_server_proto_rawDesc = "" +
 	"\f_descriptionB\t\n" +
 	"\a_status\"#\n" +
 	"\x11CreateServerReply\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02idB8\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\xb9\x02\n" +
+	"\x11ListServerRequest\x12\x1b\n" +
+	"\x04page\x18\x01 \x01(\rB\a\xfaB\x04*\x02 \x00R\x04page\x12%\n" +
+	"\bpageSize\x18\x02 \x01(\rB\t\xfaB\x06*\x04\x182 \x00R\bpageSize\x12+\n" +
+	"\x05order\x18\x03 \x01(\tB\x10\xfaB\rr\vR\x03ascR\x04descH\x00R\x05order\x88\x01\x01\x12(\n" +
+	"\aorderBy\x18\x04 \x01(\tB\t\xfaB\x06r\x04R\x02idH\x01R\aorderBy\x88\x01\x01\x12\x1d\n" +
+	"\akeyword\x18\x05 \x01(\tH\x02R\akeyword\x88\x01\x01\x12\x17\n" +
+	"\x04name\x18\x06 \x01(\tH\x03R\x04name\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\a \x01(\bH\x04R\x06status\x88\x01\x01B\b\n" +
+	"\x06_orderB\n" +
+	"\n" +
+	"\b_orderByB\n" +
+	"\n" +
+	"\b_keywordB\a\n" +
+	"\x05_nameB\t\n" +
+	"\a_status\"\xda\x02\n" +
+	"\x0fListServerReply\x12\x14\n" +
+	"\x05total\x18\x01 \x01(\rR\x05total\x12M\n" +
+	"\x04list\x18\x02 \x03(\v29.configure.api.configure.server.v1.ListServerReply.ServerR\x04list\x1a\xe1\x01\n" +
+	"\x06Server\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12%\n" +
+	"\vdescription\x18\x04 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x05 \x01(\bH\x01R\x06status\x88\x01\x01\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\rR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\a \x01(\rR\tupdatedAtB\x0e\n" +
+	"\f_descriptionB\t\n" +
+	"\a_statusB8\n" +
 	"!configure.api.configure.server.v1B\bServerV1P\x01Z\a./v1;v1b\x06proto3"
 
 var (
@@ -162,17 +426,21 @@ func file_api_configure_server_configure_server_proto_rawDescGZIP() []byte {
 	return file_api_configure_server_configure_server_proto_rawDescData
 }
 
-var file_api_configure_server_configure_server_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_api_configure_server_configure_server_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_api_configure_server_configure_server_proto_goTypes = []any{
-	(*CreateServerRequest)(nil), // 0: configure.api.configure.server.v1.CreateServerRequest
-	(*CreateServerReply)(nil),   // 1: configure.api.configure.server.v1.CreateServerReply
+	(*CreateServerRequest)(nil),    // 0: configure.api.configure.server.v1.CreateServerRequest
+	(*CreateServerReply)(nil),      // 1: configure.api.configure.server.v1.CreateServerReply
+	(*ListServerRequest)(nil),      // 2: configure.api.configure.server.v1.ListServerRequest
+	(*ListServerReply)(nil),        // 3: configure.api.configure.server.v1.ListServerReply
+	(*ListServerReply_Server)(nil), // 4: configure.api.configure.server.v1.ListServerReply.Server
 }
 var file_api_configure_server_configure_server_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	4, // 0: configure.api.configure.server.v1.ListServerReply.list:type_name -> configure.api.configure.server.v1.ListServerReply.Server
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_api_configure_server_configure_server_proto_init() }
@@ -181,13 +449,15 @@ func file_api_configure_server_configure_server_proto_init() {
 		return
 	}
 	file_api_configure_server_configure_server_proto_msgTypes[0].OneofWrappers = []any{}
+	file_api_configure_server_configure_server_proto_msgTypes[2].OneofWrappers = []any{}
+	file_api_configure_server_configure_server_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_configure_server_configure_server_proto_rawDesc), len(file_api_configure_server_configure_server_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
