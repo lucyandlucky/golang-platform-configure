@@ -21,11 +21,10 @@ func NewServer(conf *conf.Config, repo repository.Server) *Server {
 }
 
 // CreateServer 创建服务信息
-func (s *Server) CreateServer(ctx kratosx.Context, req *entity.Server) (uint32, error) {
-	id, err := s.repo.CreateServer(ctx, req)
+func (u *Server) CreateServer(ctx kratosx.Context, req *entity.Server) (uint32, error) {
+	id, err := u.repo.CreateServer(ctx, req)
 	if err != nil {
 		return 0, errors.CreateError(err.Error())
 	}
-
 	return id, nil
 }

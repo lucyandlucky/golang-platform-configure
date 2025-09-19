@@ -21,7 +21,11 @@ func NewServer() *Server {
 	return serverIns
 }
 
+// CreateServer 创建数据
 func (s Server) CreateServer(ctx kratosx.Context, server *entity.Server) (uint32, error) {
-	//TODO implement me
-	panic("implement me")
+	return server.Id, ctx.DB().Create(server).Error
+}
+
+func (s Server) GetServerByKeyword(ctx kratosx.Context, keyword string) (*entity.Server, error) {
+	return nil, nil
 }
