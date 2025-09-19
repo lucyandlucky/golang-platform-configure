@@ -1,4 +1,4 @@
-module configure
+module github.com/lucyandlucky/golang-platform-configure
 
 go 1.23.8
 

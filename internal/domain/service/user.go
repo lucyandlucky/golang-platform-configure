@@ -1,9 +1,9 @@
 package service
 
 import (
-	"configure/api/configure/errors"
-	"configure/internal/conf"
 	"github.com/limes-cloud/kratosx"
+	"github.com/lucyandlucky/golang-platform-configure/api/configure/errors"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
 )
 
 type User struct {

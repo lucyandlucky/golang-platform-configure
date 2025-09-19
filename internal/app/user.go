@@ -1,13 +1,13 @@
 package app
 
 import (
-	pb "configure/api/configure/user/v1"
-	"configure/internal/conf"
-	"configure/internal/domain/service"
 	"context"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/limes-cloud/kratosx"
+	pb "github.com/lucyandlucky/golang-platform-configure/api/configure/user/v1"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/service"
 )
 
 type User struct {

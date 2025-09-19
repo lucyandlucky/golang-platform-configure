@@ -1,8 +1,8 @@
 package dbs
 
 import (
-	"configure/internal/domain/entity"
 	"github.com/limes-cloud/kratosx"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
 	"sync"
 )
 

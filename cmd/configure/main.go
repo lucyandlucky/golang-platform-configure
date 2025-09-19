@@ -12,8 +12,8 @@ import (
 	"github.com/limes-cloud/kratosx/pkg/printx"
 	_ "go.uber.org/automaxprocs"
 
-	"configure/internal/app"
-	"configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/app"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
 )
 
 const (

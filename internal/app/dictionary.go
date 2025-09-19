@@ -8,13 +8,13 @@ import (
 	"github.com/limes-cloud/kratosx"
 	"github.com/limes-cloud/kratosx/pkg/valx"
 
-	pb "configure/api/configure/dictionary/v1"
-	"configure/api/configure/errors"
-	"configure/internal/conf"
-	"configure/internal/domain/entity"
-	"configure/internal/domain/service"
-	"configure/internal/infra/dbs"
-	"configure/internal/types"
+	pb "github.com/lucyandlucky/golang-platform-configure/api/configure/dictionary/v1"
+	"github.com/lucyandlucky/golang-platform-configure/api/configure/errors"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/service"
+	"github.com/lucyandlucky/golang-platform-configure/internal/infra/dbs"
+	"github.com/lucyandlucky/golang-platform-configure/internal/types"
 )
 
 type Dictionary struct {

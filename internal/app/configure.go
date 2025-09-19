@@ -1,7 +1,7 @@
 package app
 
 import (
-	pb "configure/api/configure/configure/v1"
+	pb "github.com/lucyandlucky/golang-platform-configure/api/configure/configure/v1"
 )
 
 type Configure struct {

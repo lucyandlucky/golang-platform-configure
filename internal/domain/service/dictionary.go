@@ -3,11 +3,11 @@ package service
 import (
 	"github.com/limes-cloud/kratosx"
 
-	"configure/api/configure/errors"
-	"configure/internal/conf"
-	"configure/internal/domain/entity"
-	"configure/internal/domain/repository"
-	"configure/internal/types"
+	"github.com/lucyandlucky/golang-platform-configure/api/configure/errors"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/repository"
+	"github.com/lucyandlucky/golang-platform-configure/internal/types"
 )
 
 type Dictionary struct {

@@ -4,7 +4,7 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 
-	"configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
 )
 
 type registryFunc func(c *conf.Config, hs *http.Server, gs *grpc.Server)

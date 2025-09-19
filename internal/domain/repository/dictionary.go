@@ -3,8 +3,8 @@ package repository
 import (
 	"github.com/limes-cloud/kratosx"
 
-	"configure/internal/domain/entity"
-	"configure/internal/types"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
+	"github.com/lucyandlucky/golang-platform-configure/internal/types"
 )
 
 type Dictionary interface {

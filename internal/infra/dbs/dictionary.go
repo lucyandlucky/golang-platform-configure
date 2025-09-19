@@ -6,8 +6,8 @@ import (
 	"github.com/limes-cloud/kratosx"
 	"google.golang.org/protobuf/proto"
 
-	"configure/internal/domain/entity"
-	"configure/internal/types"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
+	"github.com/lucyandlucky/golang-platform-configure/internal/types"
 )
 
 type Dictionary struct {

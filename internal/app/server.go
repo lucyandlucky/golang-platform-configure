@@ -1,15 +1,15 @@
 package app
 
 import (
-	pb "configure/api/configure/server/v1"
-	"configure/internal/conf"
-	"configure/internal/domain/entity"
-	"configure/internal/domain/service"
-	"configure/internal/infra/dbs"
 	"context"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/limes-cloud/kratosx"
+	pb "github.com/lucyandlucky/golang-platform-configure/api/configure/server/v1"
+	"github.com/lucyandlucky/golang-platform-configure/internal/conf"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
+	"github.com/lucyandlucky/golang-platform-configure/internal/domain/service"
+	"github.com/lucyandlucky/golang-platform-configure/internal/infra/dbs"
 )
 
 type Server struct {
