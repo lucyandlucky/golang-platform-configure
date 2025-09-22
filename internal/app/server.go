@@ -11,6 +11,8 @@ import (
 	"github.com/lucyandlucky/golang-platform-configure/internal/domain/service"
 	"github.com/lucyandlucky/golang-platform-configure/internal/infra/dbs"
 	"github.com/lucyandlucky/golang-platform-configure/types"
+
+	ktypes "github.com/limes-cloud/kratosx/types"
 )
 
 type Server struct {
@@ -46,6 +48,7 @@ func (s *Server) CreateServer(c context.Context, req *pb.CreateServerRequest) (*
 	return &pb.CreateServerReply{Id: id}, nil
 }
 
+// ListServer 获取服务列表
 func (s *Server) ListServer(c context.Context, req *pb.ListServerRequest) (*pb.ListServerReply, error) {
 	list, total, err := s.srv.ListServer(kratosx.MustContext(c), &types.ListServerRequest{
 		Page:     req.Page,
@@ -75,4 +78,25 @@ func (s *Server) ListServer(c context.Context, req *pb.ListServerRequest) (*pb.L
 	}
 
 	return &reply, nil
+}
+
+// UpdateServer 更新服务
+func (s *Server) UpdateServer(c context.Context, req *pb.UpdateServerRequest) (*pb.UpdateServerReply, error) {
+	if err := s.srv.UpdateServer(kratosx.MustContext(c), &entity.Server{
+		BaseModel: ktypes.BaseModel{Id: req.Id},
+		Keyword:   req.Keyword,
+		Name:      req.Name,
+		Status:    req.Status,
+	}); err != nil {
+		return nil, err
+	}
+
+	return &pb.UpdateServerReply{}, nil
+}
+
+func (s *Server) DeleteServer(c context.Context, req *pb.DeleteServerRequest) (*pb.DeleteServerReply, error) {
+	if err := s.srv.DeleteServer(kratosx.MustContext(c), req.Id); err != nil {
+		return nil, err
+	}
+	return &pb.DeleteServerReply{}, nil
 }

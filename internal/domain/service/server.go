@@ -38,3 +38,19 @@ func (u *Server) ListServer(ctx kratosx.Context, req *types.ListServerRequest) (
 	}
 	return list, total, nil
 }
+
+// UpdateServer 更新服务
+func (u *Server) UpdateServer(ctx kratosx.Context, req *entity.Server) error {
+	if err := u.repo.UpdateServer(ctx, req); err != nil {
+		return errors.UpdateError(err.Error())
+	}
+	return nil
+}
+
+// DeleteServer 删除服务
+func (u *Server) DeleteServer(ctx kratosx.Context, id uint32) error {
+	if err := u.repo.DeleteServer(ctx, id); err != nil {
+		return errors.DeleteError(err.Error())
+	}
+	return nil
+}

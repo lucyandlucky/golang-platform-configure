@@ -41,6 +41,22 @@ message ListServerReply {
     uint32 updatedAt = 7;
   }
 
-  uint32 total =1;
+  uint32 total = 1;
   repeated Server list = 2;
 }
+
+message UpdateServerRequest {
+  uint32 id = 1[(validate.rules).uint32 = {gt: 0}];
+  string keyword = 2;
+  string name = 3;
+  optional bool status = 4;
+  optional string description = 5;
+}
+
+message UpdateServerReply {}
+
+message DeleteServerRequest {
+  uint32 id = 1[(validate.rules).uint32 = {gt: 0}];
+}
+
+message DeleteServerReply {}

@@ -15,4 +15,10 @@ type Server interface {
 
 	//	ListServer 获取服务列表
 	ListServer(ctx kratosx.Context, req *types.ListServerRequest) ([]*entity.Server, uint32, error)
+
+	// UpdateServer 更新服务信息
+	UpdateServer(ctx kratosx.Context, server *entity.Server) error
+
+	// DeleteServer 删除服务
+	DeleteServer(ctx kratosx.Context, id uint32) error
 }

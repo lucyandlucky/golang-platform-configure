@@ -25,6 +25,19 @@ service Server {
       get: "/configure/api/v1/servers"
     };
   }
+
+  rpc UpdateServer (UpdateServerRequest) returns (UpdateServerReply) {
+    option (google.api.http) = {
+      put: "/configure/api/v1/server",
+      body: "*"
+    };
+  }
+
+  rpc DeleteServer (DeleteServerRequest) returns (DeleteServerReply) {
+    option (google.api.http) = {
+      delete: "/configure/api/v1/server",
+    };
+  }
 }
 
 

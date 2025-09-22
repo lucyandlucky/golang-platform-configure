@@ -25,26 +25,36 @@ var File_api_configure_server_configure_server_service_proto protoreflect.FileDe
 
 const file_api_configure_server_configure_server_service_proto_rawDesc = "" +
 	"\n" +
-	"3api/configure/server/configure_server_service.proto\x12!configure.api.configure.server.v1\x1a+api/configure/server/configure_server.proto\x1a\x1cgoogle/api/annotations.proto2\xc8\x02\n" +
+	"3api/configure/server/configure_server_service.proto\x12!configure.api.configure.server.v1\x1a+api/configure/server/configure_server.proto\x1a\x1cgoogle/api/annotations.proto2\x8d\x05\n" +
 	"\x06Server\x12\xa1\x01\n" +
 	"\fCreateServer\x126.configure.api.configure.server.v1.CreateServerRequest\x1a4.configure.api.configure.server.v1.CreateServerReply\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/configure/api/v1/server\x12\x99\x01\n" +
 	"\n" +
-	"ListServer\x124.configure.api.configure.server.v1.ListServerRequest\x1a2.configure.api.configure.server.v1.ListServerReply\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/configure/api/v1/serversB8\n" +
+	"ListServer\x124.configure.api.configure.server.v1.ListServerRequest\x1a2.configure.api.configure.server.v1.ListServerReply\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/configure/api/v1/servers\x12\xa1\x01\n" +
+	"\fUpdateServer\x126.configure.api.configure.server.v1.UpdateServerRequest\x1a4.configure.api.configure.server.v1.UpdateServerReply\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/configure/api/v1/server\x12\x9e\x01\n" +
+	"\fDeleteServer\x126.configure.api.configure.server.v1.DeleteServerRequest\x1a4.configure.api.configure.server.v1.DeleteServerReply\" \x82\xd3\xe4\x93\x02\x1a*\x18/configure/api/v1/serverB8\n" +
 	"!configure.api.configure.server.v1B\bServerV1P\x01Z\a./v1;v1b\x06proto3"
 
 var file_api_configure_server_configure_server_service_proto_goTypes = []any{
 	(*CreateServerRequest)(nil), // 0: configure.api.configure.server.v1.CreateServerRequest
 	(*ListServerRequest)(nil),   // 1: configure.api.configure.server.v1.ListServerRequest
-	(*CreateServerReply)(nil),   // 2: configure.api.configure.server.v1.CreateServerReply
-	(*ListServerReply)(nil),     // 3: configure.api.configure.server.v1.ListServerReply
+	(*UpdateServerRequest)(nil), // 2: configure.api.configure.server.v1.UpdateServerRequest
+	(*DeleteServerRequest)(nil), // 3: configure.api.configure.server.v1.DeleteServerRequest
+	(*CreateServerReply)(nil),   // 4: configure.api.configure.server.v1.CreateServerReply
+	(*ListServerReply)(nil),     // 5: configure.api.configure.server.v1.ListServerReply
+	(*UpdateServerReply)(nil),   // 6: configure.api.configure.server.v1.UpdateServerReply
+	(*DeleteServerReply)(nil),   // 7: configure.api.configure.server.v1.DeleteServerReply
 }
 var file_api_configure_server_configure_server_service_proto_depIdxs = []int32{
 	0, // 0: configure.api.configure.server.v1.Server.CreateServer:input_type -> configure.api.configure.server.v1.CreateServerRequest
 	1, // 1: configure.api.configure.server.v1.Server.ListServer:input_type -> configure.api.configure.server.v1.ListServerRequest
-	2, // 2: configure.api.configure.server.v1.Server.CreateServer:output_type -> configure.api.configure.server.v1.CreateServerReply
-	3, // 3: configure.api.configure.server.v1.Server.ListServer:output_type -> configure.api.configure.server.v1.ListServerReply
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: configure.api.configure.server.v1.Server.UpdateServer:input_type -> configure.api.configure.server.v1.UpdateServerRequest
+	3, // 3: configure.api.configure.server.v1.Server.DeleteServer:input_type -> configure.api.configure.server.v1.DeleteServerRequest
+	4, // 4: configure.api.configure.server.v1.Server.CreateServer:output_type -> configure.api.configure.server.v1.CreateServerReply
+	5, // 5: configure.api.configure.server.v1.Server.ListServer:output_type -> configure.api.configure.server.v1.ListServerReply
+	6, // 6: configure.api.configure.server.v1.Server.UpdateServer:output_type -> configure.api.configure.server.v1.UpdateServerReply
+	7, // 7: configure.api.configure.server.v1.Server.DeleteServer:output_type -> configure.api.configure.server.v1.DeleteServerReply
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

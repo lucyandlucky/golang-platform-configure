@@ -72,3 +72,13 @@ func (s Server) ListServer(ctx kratosx.Context, req *types.ListServerRequest) ([
 	}
 	return list, uint32(total), db.Find(&list).Error
 }
+
+// UpdateServer 更新服务信息
+func (s Server) UpdateServer(ctx kratosx.Context, server *entity.Server) error {
+	return ctx.DB().Where("id = ?", server.Id).Updates(server).Error
+}
+
+// DeleteServer 删除服务
+func (s Server) DeleteServer(ctx kratosx.Context, id uint32) error {
+	return ctx.DB().Where("id = ?", id).Delete(&entity.Server{}).Error
+}

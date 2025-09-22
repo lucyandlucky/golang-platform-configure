@@ -278,6 +278,198 @@ func (x *ListServerReply) GetList() []*ListServerReply_Server {
 	return nil
 }
 
+type UpdateServerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Keyword       string                 `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Status        *bool                  `protobuf:"varint,4,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	Description   *string                `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateServerRequest) Reset() {
+	*x = UpdateServerRequest{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateServerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateServerRequest) ProtoMessage() {}
+
+func (x *UpdateServerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateServerRequest.ProtoReflect.Descriptor instead.
+func (*UpdateServerRequest) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateServerRequest) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *UpdateServerRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *UpdateServerRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateServerRequest) GetStatus() bool {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return false
+}
+
+func (x *UpdateServerRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+type UpdateServerReply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateServerReply) Reset() {
+	*x = UpdateServerReply{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateServerReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateServerReply) ProtoMessage() {}
+
+func (x *UpdateServerReply) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateServerReply.ProtoReflect.Descriptor instead.
+func (*UpdateServerReply) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{5}
+}
+
+type DeleteServerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteServerRequest) Reset() {
+	*x = DeleteServerRequest{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteServerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteServerRequest) ProtoMessage() {}
+
+func (x *DeleteServerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteServerRequest.ProtoReflect.Descriptor instead.
+func (*DeleteServerRequest) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteServerRequest) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type DeleteServerReply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteServerReply) Reset() {
+	*x = DeleteServerReply{}
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteServerReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteServerReply) ProtoMessage() {}
+
+func (x *DeleteServerReply) ProtoReflect() protoreflect.Message {
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteServerReply.ProtoReflect.Descriptor instead.
+func (*DeleteServerReply) Descriptor() ([]byte, []int) {
+	return file_api_configure_server_configure_server_proto_rawDescGZIP(), []int{7}
+}
+
 type ListServerReply_Server struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -293,7 +485,7 @@ type ListServerReply_Server struct {
 
 func (x *ListServerReply_Server) Reset() {
 	*x = ListServerReply_Server{}
-	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -305,7 +497,7 @@ func (x *ListServerReply_Server) String() string {
 func (*ListServerReply_Server) ProtoMessage() {}
 
 func (x *ListServerReply_Server) ProtoReflect() protoreflect.Message {
-	mi := &file_api_configure_server_configure_server_proto_msgTypes[4]
+	mi := &file_api_configure_server_configure_server_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -411,7 +603,19 @@ const file_api_configure_server_configure_server_proto_rawDesc = "" +
 	"\tcreatedAt\x18\x06 \x01(\rR\tcreatedAt\x12\x1c\n" +
 	"\tupdatedAt\x18\a \x01(\rR\tupdatedAtB\x0e\n" +
 	"\f_descriptionB\t\n" +
-	"\a_statusB8\n" +
+	"\a_status\"\xbb\x01\n" +
+	"\x13UpdateServerRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\rB\a\xfaB\x04*\x02 \x00R\x02id\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1b\n" +
+	"\x06status\x18\x04 \x01(\bH\x00R\x06status\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x05 \x01(\tH\x01R\vdescription\x88\x01\x01B\t\n" +
+	"\a_statusB\x0e\n" +
+	"\f_description\"\x13\n" +
+	"\x11UpdateServerReply\".\n" +
+	"\x13DeleteServerRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\rB\a\xfaB\x04*\x02 \x00R\x02id\"\x13\n" +
+	"\x11DeleteServerReplyB8\n" +
 	"!configure.api.configure.server.v1B\bServerV1P\x01Z\a./v1;v1b\x06proto3"
 
 var (
@@ -426,16 +630,20 @@ func file_api_configure_server_configure_server_proto_rawDescGZIP() []byte {
 	return file_api_configure_server_configure_server_proto_rawDescData
 }
 
-var file_api_configure_server_configure_server_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_api_configure_server_configure_server_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_api_configure_server_configure_server_proto_goTypes = []any{
 	(*CreateServerRequest)(nil),    // 0: configure.api.configure.server.v1.CreateServerRequest
 	(*CreateServerReply)(nil),      // 1: configure.api.configure.server.v1.CreateServerReply
 	(*ListServerRequest)(nil),      // 2: configure.api.configure.server.v1.ListServerRequest
 	(*ListServerReply)(nil),        // 3: configure.api.configure.server.v1.ListServerReply
-	(*ListServerReply_Server)(nil), // 4: configure.api.configure.server.v1.ListServerReply.Server
+	(*UpdateServerRequest)(nil),    // 4: configure.api.configure.server.v1.UpdateServerRequest
+	(*UpdateServerReply)(nil),      // 5: configure.api.configure.server.v1.UpdateServerReply
+	(*DeleteServerRequest)(nil),    // 6: configure.api.configure.server.v1.DeleteServerRequest
+	(*DeleteServerReply)(nil),      // 7: configure.api.configure.server.v1.DeleteServerReply
+	(*ListServerReply_Server)(nil), // 8: configure.api.configure.server.v1.ListServerReply.Server
 }
 var file_api_configure_server_configure_server_proto_depIdxs = []int32{
-	4, // 0: configure.api.configure.server.v1.ListServerReply.list:type_name -> configure.api.configure.server.v1.ListServerReply.Server
+	8, // 0: configure.api.configure.server.v1.ListServerReply.list:type_name -> configure.api.configure.server.v1.ListServerReply.Server
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -451,13 +659,14 @@ func file_api_configure_server_configure_server_proto_init() {
 	file_api_configure_server_configure_server_proto_msgTypes[0].OneofWrappers = []any{}
 	file_api_configure_server_configure_server_proto_msgTypes[2].OneofWrappers = []any{}
 	file_api_configure_server_configure_server_proto_msgTypes[4].OneofWrappers = []any{}
+	file_api_configure_server_configure_server_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_configure_server_configure_server_proto_rawDesc), len(file_api_configure_server_configure_server_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

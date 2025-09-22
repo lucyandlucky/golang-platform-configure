@@ -7,6 +7,23 @@ info:
     version: 0.0.1
 paths:
     /configure/api/v1/server:
+        put:
+            tags:
+                - Server
+            operationId: Server_UpdateServer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/configure.api.configure.server.v1.UpdateServerRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/configure.api.configure.server.v1.UpdateServerReply'
         post:
             tags:
                 - Server
@@ -25,6 +42,23 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/configure.api.configure.server.v1.CreateServerReply'
+        delete:
+            tags:
+                - Server
+            operationId: Server_DeleteServer
+            parameters:
+                - name: id
+                  in: query
+                  schema:
+                    type: integer
+                    format: uint32
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/configure.api.configure.server.v1.DeleteServerReply'
     /configure/api/v1/servers:
         get:
             tags:
@@ -88,6 +122,9 @@ components:
                     type: string
                 status:
                     type: boolean
+        configure.api.configure.server.v1.DeleteServerReply:
+            type: object
+            properties: {}
         configure.api.configure.server.v1.ListServerReply:
             type: object
             properties:
@@ -118,5 +155,22 @@ components:
                 updatedAt:
                     type: integer
                     format: uint32
+        configure.api.configure.server.v1.UpdateServerReply:
+            type: object
+            properties: {}
+        configure.api.configure.server.v1.UpdateServerRequest:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: uint32
+                keyword:
+                    type: string
+                name:
+                    type: string
+                status:
+                    type: boolean
+                description:
+                    type: string
 tags:
     - name: Server

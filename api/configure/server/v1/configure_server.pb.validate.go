@@ -582,6 +582,448 @@ var _ interface {
 	ErrorName() string
 } = ListServerReplyValidationError{}
 
+// Validate checks the field values on UpdateServerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UpdateServerRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UpdateServerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UpdateServerRequestMultiError, or nil if none found.
+func (m *UpdateServerRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UpdateServerRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetId() <= 0 {
+		err := UpdateServerRequestValidationError{
+			field:  "Id",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for Keyword
+
+	// no validation rules for Name
+
+	if m.Status != nil {
+		// no validation rules for Status
+	}
+
+	if m.Description != nil {
+		// no validation rules for Description
+	}
+
+	if len(errors) > 0 {
+		return UpdateServerRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// UpdateServerRequestMultiError is an error wrapping multiple validation
+// errors returned by UpdateServerRequest.ValidateAll() if the designated
+// constraints aren't met.
+type UpdateServerRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UpdateServerRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UpdateServerRequestMultiError) AllErrors() []error { return m }
+
+// UpdateServerRequestValidationError is the validation error returned by
+// UpdateServerRequest.Validate if the designated constraints aren't met.
+type UpdateServerRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UpdateServerRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UpdateServerRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UpdateServerRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UpdateServerRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UpdateServerRequestValidationError) ErrorName() string {
+	return "UpdateServerRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UpdateServerRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUpdateServerRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UpdateServerRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UpdateServerRequestValidationError{}
+
+// Validate checks the field values on UpdateServerReply with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *UpdateServerReply) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UpdateServerReply with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UpdateServerReplyMultiError, or nil if none found.
+func (m *UpdateServerReply) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UpdateServerReply) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return UpdateServerReplyMultiError(errors)
+	}
+
+	return nil
+}
+
+// UpdateServerReplyMultiError is an error wrapping multiple validation errors
+// returned by UpdateServerReply.ValidateAll() if the designated constraints
+// aren't met.
+type UpdateServerReplyMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UpdateServerReplyMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UpdateServerReplyMultiError) AllErrors() []error { return m }
+
+// UpdateServerReplyValidationError is the validation error returned by
+// UpdateServerReply.Validate if the designated constraints aren't met.
+type UpdateServerReplyValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UpdateServerReplyValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UpdateServerReplyValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UpdateServerReplyValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UpdateServerReplyValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UpdateServerReplyValidationError) ErrorName() string {
+	return "UpdateServerReplyValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UpdateServerReplyValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUpdateServerReply.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UpdateServerReplyValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UpdateServerReplyValidationError{}
+
+// Validate checks the field values on DeleteServerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *DeleteServerRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on DeleteServerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// DeleteServerRequestMultiError, or nil if none found.
+func (m *DeleteServerRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *DeleteServerRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetId() <= 0 {
+		err := DeleteServerRequestValidationError{
+			field:  "Id",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return DeleteServerRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// DeleteServerRequestMultiError is an error wrapping multiple validation
+// errors returned by DeleteServerRequest.ValidateAll() if the designated
+// constraints aren't met.
+type DeleteServerRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m DeleteServerRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m DeleteServerRequestMultiError) AllErrors() []error { return m }
+
+// DeleteServerRequestValidationError is the validation error returned by
+// DeleteServerRequest.Validate if the designated constraints aren't met.
+type DeleteServerRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteServerRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteServerRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteServerRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteServerRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteServerRequestValidationError) ErrorName() string {
+	return "DeleteServerRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteServerRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteServerRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteServerRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteServerRequestValidationError{}
+
+// Validate checks the field values on DeleteServerReply with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *DeleteServerReply) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on DeleteServerReply with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// DeleteServerReplyMultiError, or nil if none found.
+func (m *DeleteServerReply) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *DeleteServerReply) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if len(errors) > 0 {
+		return DeleteServerReplyMultiError(errors)
+	}
+
+	return nil
+}
+
+// DeleteServerReplyMultiError is an error wrapping multiple validation errors
+// returned by DeleteServerReply.ValidateAll() if the designated constraints
+// aren't met.
+type DeleteServerReplyMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m DeleteServerReplyMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m DeleteServerReplyMultiError) AllErrors() []error { return m }
+
+// DeleteServerReplyValidationError is the validation error returned by
+// DeleteServerReply.Validate if the designated constraints aren't met.
+type DeleteServerReplyValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e DeleteServerReplyValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e DeleteServerReplyValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e DeleteServerReplyValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e DeleteServerReplyValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e DeleteServerReplyValidationError) ErrorName() string {
+	return "DeleteServerReplyValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e DeleteServerReplyValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sDeleteServerReply.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = DeleteServerReplyValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = DeleteServerReplyValidationError{}
+
 // Validate checks the field values on ListServerReply_Server with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
