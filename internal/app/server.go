@@ -10,6 +10,7 @@ import (
 	"github.com/lucyandlucky/golang-platform-configure/internal/domain/entity"
 	"github.com/lucyandlucky/golang-platform-configure/internal/domain/service"
 	"github.com/lucyandlucky/golang-platform-configure/internal/infra/dbs"
+	"github.com/lucyandlucky/golang-platform-configure/types"
 )
 
 type Server struct {
@@ -43,4 +44,35 @@ func (s *Server) CreateServer(c context.Context, req *pb.CreateServerRequest) (*
 		return nil, err
 	}
 	return &pb.CreateServerReply{Id: id}, nil
+}
+
+func (s *Server) ListServer(c context.Context, req *pb.ListServerRequest) (*pb.ListServerReply, error) {
+	list, total, err := s.srv.ListServer(kratosx.MustContext(c), &types.ListServerRequest{
+		Page:     req.Page,
+		PageSize: req.PageSize,
+		Order:    req.Order,
+		OrderBy:  req.OrderBy,
+		Keyword:  req.Keyword,
+		Name:     req.Name,
+		Status:   req.Status,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	reply := pb.ListServerReply{Total: total}
+	for _, item := range list {
+		reply.List = append(reply.List, &pb.ListServerReply_Server{
+			Id:          item.Id,
+			Keyword:     item.Keyword,
+			Name:        item.Name,
+			Description: item.Description,
+			Status:      item.Status,
+			CreatedAt:   uint32(item.CreatedAt),
+			UpdatedAt:   uint32(item.UpdatedAt),
+		})
+	}
+
+	return &reply, nil
 }
